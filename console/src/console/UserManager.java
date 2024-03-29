@@ -24,15 +24,17 @@ public class UserManager {
 		return foundKey;
 	}
 	
-	public void AddUser(User user) {
+	public void addUser(User user) {
 		if(foundUserById(user.getId()) != null) {
+			System.out.println("사용할 수 없는 아이디");
 			return;
 		}
 		ArrayList<Post> post = new ArrayList<>();
 		users.put(user, post);
+		System.out.println("회원가입이 완료되었습니다.");
 	}
 	
-	private User LoginUser(String id, String password) {
+	public User loginUser(String id, String password) {
 		List keySet = new ArrayList(users.keySet());
 		User foundKey = null;
 		for(Object key : keySet) {
