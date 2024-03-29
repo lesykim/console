@@ -81,7 +81,8 @@ public class Console {
 	}
 	
 	private void logout() {
-		
+		this.userLog = null;
+		System.out.println("로그아웃 되었습니다.");
 	}
 	
 	private void runUserSubMenu(int select) {
