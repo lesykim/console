@@ -1,10 +1,6 @@
 package console;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Board implements CRUD{
@@ -76,4 +72,12 @@ public class Board implements CRUD{
 		System.out.println("게시글이 삭제되었습니다.");
 	}
 	
+	public void deleteLeaveUserPost(User user) {
+		for(Post post : board) {
+			if(post.getUser().getId().equals(user.getId())) {
+				board.remove(post);
+			}
+		}
+	}
+		
 }
