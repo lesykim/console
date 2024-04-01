@@ -58,7 +58,9 @@ public class Board implements CRUD{
 	}
 
 	public void readData(int number) {
-		
+		int idx = number-1;
+		Post post = board.get(idx);
+		System.out.println(post);
 	}
 
 	public void updateData(Post post) {
