@@ -9,9 +9,14 @@ import java.util.Scanner;
 public class UserManager implements CRUD{
 	Scanner sc = new Scanner(System.in);
 	Map<User,ArrayList<Post>> users;
+	Board board;
 	
 	public UserManager() {
 		users = new HashMap<>();
+	}
+	
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 	
 	private User foundUserById(String id) {
@@ -62,7 +67,6 @@ public class UserManager implements CRUD{
 		System.out.println("회원가입이 완료되었습니다.");
 	}
 
-	@Override
 	public void readData(User user) {
 		System.out.println(user);
 		System.out.println("----게시글 목록 ▼");
@@ -79,7 +83,6 @@ public class UserManager implements CRUD{
 		return input;
 	}
 
-	@Override
 	public void updateData(User user, int number) {
 		ArrayList<Post> post = users.get(user);
 		if(post.size() < number || number <= 0) {
@@ -87,11 +90,7 @@ public class UserManager implements CRUD{
 			return;
 		}
 		Post updatePost = post.get(number-1);
-		String title = inputString("title");
-		updatePost.setTitle(title);
-		String body = inputString("body");
-		updatePost.setBody(body);
-		System.out.println("수정되었습니다.");
+		board.updateData(updatePost);
 	}
 
 	@Override
