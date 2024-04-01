@@ -90,7 +90,13 @@ public class Console {
 	}
 	
 	private void leave() {
-		
+		String password = inputString("password");
+		if(!password.equals(userLog.getPassword())) {
+			System.out.println("비밀번호를 다시 확인하세요.");
+			return;
+		}
+		board.deleteLeaveUserPost(userLog);
+		userManager.deleteUser(userLog);
 	}
 	
 	private void login() {
