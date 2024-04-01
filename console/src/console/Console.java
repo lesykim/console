@@ -97,6 +97,7 @@ public class Console {
 		}
 		board.deleteLeaveUserPost(userLog);
 		userManager.deleteUser(userLog);
+		userLog = null;
 	}
 	
 	private void login() {
