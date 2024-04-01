@@ -76,12 +76,6 @@ public class UserManager implements CRUD{
 			System.out.printf("(%d) %s\n",n++,info.getTitle());
 		}
 	}
-	
-	private String inputString(String message) {
-		System.out.print(message + " : ");
-		String input = sc.next();
-		return input;
-	}
 
 	public void updateData(User user, int number) {
 		ArrayList<Post> post = users.get(user);
@@ -104,6 +98,9 @@ public class UserManager implements CRUD{
 		board.deleteData(deletePost);
 	}
 	
-	
+	public void deleteUser(User user) {
+		users.remove(user);
+		System.out.println("탈퇴되었습니다.");
+	}
 
 }
