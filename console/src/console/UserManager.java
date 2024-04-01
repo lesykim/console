@@ -92,10 +92,16 @@ public class UserManager implements CRUD{
 		Post updatePost = post.get(number-1);
 		board.updateData(updatePost);
 	}
-
-	@Override
-	public void deleteData(User user) {
-		
+	
+	public void deleteData(User user, int number) {
+		ArrayList<Post> post = users.get(user);
+		if(post.size() < number || number <= 0) {
+			System.err.println("잘못된 입력");
+			return;
+		}
+		Post deletePost = post.get(number-1);
+		post.remove(number-1);
+		board.deleteData(deletePost);
 	}
 	
 	
