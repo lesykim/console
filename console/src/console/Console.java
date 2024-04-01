@@ -5,6 +5,23 @@ import java.util.Scanner;
 
 public class Console {
 	private Scanner sc = new Scanner(System.in);
+
+	private final int JOIN = 1;
+	private final int LEAVE = 2;
+	private final int LOG_IN = 3;
+	private final int LOG_OUT = 4;
+	private final int MY_PAGE = 5;
+	private final int UPDATE_POST = 6;
+	private final int DELETE_POST = 7;
+	private final int USER_LIST = 8;	
+	
+	private final int BEFORE= 1;
+	private final int AFTER= 2;
+	private final int USER_MENU= 3;
+	private final int CREATE_POST= 4;
+	private final int READ_POST= 5;
+	private final int END= 0;	
+	
 	private Board board;
 	private UserManager userManager;
 	private User userLog;
@@ -141,22 +158,23 @@ public class Console {
 		userManager.readAllData();
 	}
 	
+	
 	private void runUserSubMenu(int select) {
-		if(select == 1 && !isLogin()) {
+		if(select == JOIN && !isLogin()) {
 			join();
-		}else if(select == 2 && isLogin()) {
+		}else if(select == LEAVE && isLogin()) {
 			leave();
-		}else if(select == 3 && !isLogin()) {
+		}else if(select == LOG_IN && !isLogin()) {
 			login();
-		}else if(select == 4 && isLogin()) {
+		}else if(select == LOG_OUT && isLogin()) {
 			logout();
-		}else if(select == 5 && isLogin()) {
+		}else if(select == MY_PAGE && isLogin()) {
 			myPage();
-		}else if(select == 6 && isLogin()) {
+		}else if(select == UPDATE_POST && isLogin()) {
 			updatePost();
-		}else if(select == 7) {
+		}else if(select == DELETE_POST && isLogin()) {
 			deletePost();
-		}else if(select == 8) {
+		}else if(select == USER_LIST) {
 			printUserList();			
 		}
 	}
@@ -176,22 +194,23 @@ public class Console {
 		board.readData(number);
 	}
 	
+	
 	private void runMainMenu(int select) {
-		if(select == 1) {
+		if(select == BEFORE) {
 			if(page == 1) {
 				System.out.println("페이지를 넘길 수 없습니다.");
 				return;
 			}
 			page--;
-		}else if(select == 2) {
+		}else if(select == AFTER) {
 			page++;
-		}else if(select == 3) {
+		}else if(select == USER_MENU) {
 			printUserSubMenu();
 			int sel = inputNumber("메뉴");
 			runUserSubMenu(sel);
-		}else if(select == 4 && isLogin()) {
+		}else if(select == CREATE_POST && isLogin()) {
 			runCreatePost();
-		}else if(select == 5) {
+		}else if(select == READ_POST) {
 			runReadPost();
 		}
 	}
@@ -201,7 +220,7 @@ public class Console {
 			printConsole();
 			printMainMenu();
 			int select = inputNumber("메뉴");
-			if(select == 0) {
+			if(select == END) {
 				System.out.println("시스템 종료");
 				break;
 			}
