@@ -16,7 +16,11 @@ public class Board implements CRUD{
 		board = new ArrayList<>();
 		userManager = users;
 	}
-
+	
+	public int getBoardSize() {
+		return board.size();
+	}
+	
 	private String inputString(String message) {
 		System.out.print(message + " : ");
 		String input = sc.next();
