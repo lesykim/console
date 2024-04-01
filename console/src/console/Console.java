@@ -141,9 +141,9 @@ public class Console {
 	private void runUserSubMenu(int select) {
 		if(select == 1 && !isLogin()) {
 			join();
-		}else if(select == 2 && !isLogin()) {
+		}else if(select == 2 && isLogin()) {
 			leave();
-		}else if(select == 3 && isLogin()) {
+		}else if(select == 3 && !isLogin()) {
 			login();
 		}else if(select == 4 && isLogin()) {
 			logout();
