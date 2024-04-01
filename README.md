@@ -31,3 +31,4 @@
 ㄴ 현재 가입되어있는 회원들 전체 리스트(아이디,비밀번호,이름)를 출력한다.
 
 ■ 데모
+<img src="https://github.com/lesykim/console/blob/master/image/%EB%8D%B0%EB%AA%A8.gif" width="500">
