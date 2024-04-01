@@ -72,14 +72,15 @@ public class Board implements CRUD{
 		System.out.println("게시글이 삭제되었습니다.");
 	}
 	
-	public void deleteLeaveUserPost(User user) {
-//		for(int i = 0; i<board.size(); i++) {
-//			Post post = board.get(i);
-//			String id = post.getUser().getId();
-//			if(id.equals(user.getId())) {
-//				board.remove(post);
-//			}
-//		}
+	public void deleteLeaveUserPost(ArrayList<Post> userPost) {
+		for(int i = 0; i<userPost.size(); i++) {
+			Post post= userPost.get(i);
+			for(int j = 0; j<board.size(); j++) {
+				if(post == board.get(j)) {
+					board.remove(j);
+				}
+			}
+		}
 	}
 		
 }
