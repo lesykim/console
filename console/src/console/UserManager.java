@@ -31,6 +31,10 @@ public class UserManager implements CRUD{
 		return foundKey;
 	}
 	
+	public ArrayList<Post> getMap(User user){
+		return users.get(user);
+	}
+	
 	public User loginUser(String id, String password) {
 		List keySet = new ArrayList(users.keySet());
 		User foundKey = null;
