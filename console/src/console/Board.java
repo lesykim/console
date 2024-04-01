@@ -57,14 +57,16 @@ public class Board implements CRUD{
 		System.out.println("작성 완료");
 	}
 
-	@Override
-	public void readData(User user) {
+	public void readData(int number) {
 		
 	}
 
-	@Override
-	public void updateData(User user, int number) {
-		
+	public void updateData(Post post) {
+		String title = inputString("title");
+		post.setTitle(title);
+		String body = inputString("body");
+		post.setBody(body);
+		System.out.println("수정되었습니다.");
 	}
 
 	@Override
