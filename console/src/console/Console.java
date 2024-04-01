@@ -12,6 +12,7 @@ public class Console {
 	public Console() {
 		userManager = new UserManager();
 		board = new Board(userManager);
+		userManager.setBoard(board);
 		userLog = null;
 		page = 1;
 	}
@@ -62,11 +63,13 @@ public class Console {
 	
 	private void printUserSubMenu() {
 		System.out.println("[1] 회원가입");
-		System.out.println("[2] 로그인");
-		System.out.println("[3] 로그아웃");
-		System.out.println("[4] 마이페이지");
-		System.out.println("[5] 게시글 수정");
-		System.out.println("[6] 회원정보 출력");
+		System.out.println("[2] 회원탈퇴");
+		System.out.println("[3] 로그인");
+		System.out.println("[4] 로그아웃");
+		System.out.println("[5] 마이페이지");
+		System.out.println("[6] 게시글 수정");
+		System.out.println("[7] 게시글 삭제");
+		System.out.println("[8] 회원정보 출력");
 	}
 	
 	private String inputString(String message) {
@@ -84,6 +87,10 @@ public class Console {
 		User user = new User(id,password,name);
 		
 		userManager.createData(user);
+	}
+	
+	private void leave() {
+		
 	}
 	
 	private void login() {
@@ -109,34 +116,55 @@ public class Console {
 		userManager.readData(userLog);
 	}
 	
-	private void printUserList() {
-		userManager.readAllData();
-	}
-	
 	private void updatePost() {
 		userManager.readData(userLog);
 		int number = inputNumber("수정할 게시글 번호");
 		userManager.updateData(userLog,number);
+	}
+
+	private void deletePost() {
+		userManager.readData(userLog);
+		int number = inputNumber("삭제할 게시글 번호");
+		userManager.deleteData(userLog, number);
+	}
+
+	private void printUserList() {
+		userManager.readAllData();
 	}
 	
 	private void runUserSubMenu(int select) {
 		if(select == 1 && !isLogin()) {
 			join();
 		}else if(select == 2 && !isLogin()) {
-			login();
+			leave();
 		}else if(select == 3 && isLogin()) {
-			logout();
+			login();
 		}else if(select == 4 && isLogin()) {
-			myPage();
+			logout();
 		}else if(select == 5 && isLogin()) {
+			myPage();
+		}else if(select == 6 && isLogin()) {
 			updatePost();
-		}else if(select == 6) {			
-			printUserList();
+		}else if(select == 7) {
+			deletePost();
+		}else if(select == 8) {
+			printUserList();			
 		}
 	}
 	
 	private void runCreatePost() {
 		board.createData(userLog);
+	}
+	
+	private void runReadPost() {
+		int number = inputNumber("조회할 게시글 번호");
+		
+		if(number > page * 5 || page-1 * 5 >= number) {
+			System.out.println("조회할 수 없는 번호입니다.");
+			return;
+		}
+		
+		board.readData(number);
 	}
 	
 	private void runMainMenu(int select) {
@@ -155,7 +183,7 @@ public class Console {
 		}else if(select == 4 && isLogin()) {
 			runCreatePost();
 		}else if(select == 5) {
-			
+			runReadPost();
 		}
 	}
 	
