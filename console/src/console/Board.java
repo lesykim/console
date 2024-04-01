@@ -68,10 +68,10 @@ public class Board implements CRUD{
 		post.setBody(body);
 		System.out.println("수정되었습니다.");
 	}
-
-	@Override
-	public void deleteData(User user) {
-		
+	
+	public void deleteData(Post post) {
+		board.remove(post);
+		System.out.println("게시글이 삭제되었습니다.");
 	}
 	
 }
