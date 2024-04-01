@@ -73,11 +73,13 @@ public class Board implements CRUD{
 	}
 	
 	public void deleteLeaveUserPost(User user) {
-		for(Post post : board) {
-			if(post.getUser().getId().equals(user.getId())) {
-				board.remove(post);
-			}
-		}
+//		for(int i = 0; i<board.size(); i++) {
+//			Post post = board.get(i);
+//			String id = post.getUser().getId();
+//			if(id.equals(user.getId())) {
+//				board.remove(post);
+//			}
+//		}
 	}
 		
 }
