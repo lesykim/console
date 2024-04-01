@@ -1,5 +1,6 @@
 package console;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
@@ -95,7 +96,8 @@ public class Console {
 			System.out.println("비밀번호를 다시 확인하세요.");
 			return;
 		}
-		board.deleteLeaveUserPost(userLog);
+		ArrayList<Post> post = userManager.getMap(userLog);
+		board.deleteLeaveUserPost(post);
 		userManager.deleteUser(userLog);
 		userLog = null;
 	}
